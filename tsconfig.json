@@ -22,7 +22,8 @@
     "target": "es6",
     "types": [
       "jasmine",
-      "node"
+      "node",
+      "typescript"
     ]
   },
   "include": [

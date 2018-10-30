@@ -5,6 +5,10 @@
     "ng-new": {
       "description": "new workspace",
       "factory": "./ng-new"
+    },
+    "http-service": {
+      "description": "new http service",
+      "factory": "./http-service"
     }
   }
 }
