@@ -2,7 +2,7 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/c
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/do';
+import { tap } from 'rxjs/internal/operators';
 
 @Injectable()
 export class LoggingInterceptorService implements HttpInterceptor {
@@ -10,8 +10,9 @@ export class LoggingInterceptorService implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const started = Date.now();
-        return next.handle(req).do(() => { }, (err: any) => {
-            console.error(err);
-        });
+        return next.handle(req);
+        // return next.handle(req).tap(() => { }, (err: any) => {
+        //     console.error(err);
+        // });
     }
 }

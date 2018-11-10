@@ -1,0 +1,11 @@
+<nav>
+    <mat-toolbar color="primary">
+        <a href="/">
+        </a>
+        <%= auth === 'SSO' ? 
+        `<span>
+            <button *ngIf="!isLoggedIn()" mat-button (click)="login()">Login</button>
+            <button *ngIf="isLoggedIn()" mat-button (click)="logout()">Logout</button>
+        </span>` : '' %>
+    </mat-toolbar>
+</nav>

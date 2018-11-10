@@ -1,0 +1,68 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "id": "NewSchematicOptions",
+    "title": "Ng New Command Line Options",
+    "type": "object",
+    "properties": {
+        "directory": {
+            "type": "string",
+            "description": "The directory name to create the workspace in"
+        },
+        "name": {
+            "description": "The name of the workspace",
+            "type": "string",
+            "default": {
+                "$source": "argv",
+                "index": 0
+            }
+        },
+        "authentication": {
+            "description": "The authentication strategy to use",
+            "enum": [
+                "SSO",
+                "None"
+            ],
+            "default": "None"
+        },
+        "skipInstall": {
+            "description": "Skip installing dependency packages",
+            "type": "boolean",
+            "default": true
+        },
+        "viewEncapsulation": {
+            "description": "Specifies the view encapsulation strategy",
+            "enum": [
+                "Emulated",
+                "Native",
+                "None"
+            ]
+        },
+        "prefix": {
+            "type": "string",
+            "description": "the prefix to apply to generated selectors",
+            "format": "html-selector",
+            "default": "demo",
+            "alias": "p"
+        },
+        "version": {
+            "type": "string",
+            "description": "The version of the Angular CLI to use",
+            "visible": false
+        },
+        "projectRoot": {
+            "description": "The path where new projects will be created",
+            "type": "string",
+            "default": "src"
+        },
+        "routing": {
+            "type": "boolean",
+            "description": "Generates a routing module",
+            "default": true
+        },
+        "style": {
+            "description": "The file extension to be used for style files",
+            "type": "string",
+            "default": "scss"
+        }
+    }
+}
