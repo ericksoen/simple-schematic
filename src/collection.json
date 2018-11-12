@@ -4,7 +4,8 @@
   "schematics": {
     "ng-new": {
       "description": "new workspace",
-      "factory": "./ng-new"
+      "factory": "./ng-new",
+      "schema": "./ng-new/schema.json"
     },
     "http-service": {
       "description": "new http service",

@@ -4,19 +4,12 @@ import { Schema as NewWorkspaceOptions } from './schema';
 export default function (options: NewWorkspaceOptions): Rule {
 
     return (host: Tree, context: SchematicContext) => {
-        console.log('Running your custom schematic');
 
-        // TODO: Name argument not picked up unless --name is respecified
-        const workspaceOptions: NewWorkspaceOptions = { ...options, version: '7.0.3', routing: false, style: 'scss', skipInstall: true, projectRoot: 'src', directory: options.name, authentication: 'SSO' };
+        const workspaceOptions: NewWorkspaceOptions = { ...options, version: '7.0.3', routing: false, style: 'scss', skipInstall: true, projectRoot: 'src', directory: options.name };
 
-        // TODO: Default value not supplied?
-        if (workspaceOptions.authentication === undefined) {
-            workspaceOptions.authentication = 'None';
-        }
         const rootDir = `${workspaceOptions.name}/${workspaceOptions.projectRoot}`;
         const sourceAppDir = `${rootDir}/app`;
 
-        console.log(workspaceOptions.authentication);
         const ssoOnlyFiles = workspaceOptions.authentication === 'SSO' ?
             chain([
                 mergeWith(
@@ -41,7 +34,7 @@ export default function (options: NewWorkspaceOptions): Rule {
             mergeWith(
                 apply(url('./files/environment'), [
                     template({
-                        'auth': 'SSO' // TODO: Using config value returns 'undefined'
+                        'auth': options.authentication
                     }),
                     move(`${rootDir}/environments`)
                 ]), MergeStrategy.AllowCreationConflict
@@ -49,7 +42,7 @@ export default function (options: NewWorkspaceOptions): Rule {
             mergeWith(
                 apply(url('./files/app'), [
                     template({
-                        'auth': 'SSO' // TODO: Using config value returns 'undefined'
+                        'auth': options.authentication
                     }),
                     move(`${sourceAppDir}`)
                 ]), MergeStrategy.AllowCreationConflict
@@ -57,7 +50,7 @@ export default function (options: NewWorkspaceOptions): Rule {
             mergeWith(
                 apply(url('./files/core'), [
                     template({
-                        'auth': 'SSO' // TODO: Using config value returns 'undefined
+                        'auth': options.authentication
                     }),
                     move(`${sourceAppDir}/core`)
                 ])
