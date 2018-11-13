@@ -42,7 +42,8 @@ export default function (options: NewWorkspaceOptions): Rule {
             mergeWith(
                 apply(url('./files/app'), [
                     template({
-                        'auth': options.authentication
+                        'auth': options.authentication,
+                        'selector': options.prefix
                     }),
                     move(`${sourceAppDir}`)
                 ]), MergeStrategy.AllowCreationConflict
