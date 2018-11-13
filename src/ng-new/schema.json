@@ -24,12 +24,12 @@
                 "type": "list",
                 "items": [
                     {
-                        "value": "SSO",
-                        "label": "SSO"
-                    },
-                    {
                         "value": "None",
                         "label": "None"
+                    },
+                    {
+                        "value": "SSO",
+                        "label": "SSO"
                     }
                 ]
             }
