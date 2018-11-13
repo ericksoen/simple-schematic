@@ -18,11 +18,21 @@
         },
         "authentication": {
             "description": "The authentication strategy to use",
-            "enum": [
-                "SSO",
-                "None"
-            ],
-            "default": "None"
+            "default": "None",
+            "x-prompt": {
+                "message": "Which authentication strategy would you like to use?",
+                "type": "list",
+                "items": [
+                    {
+                        "value": "SSO",
+                        "label": "SSO"
+                    },
+                    {
+                        "value": "None",
+                        "label": "None"
+                    }
+                ]
+            }
         },
         "skipInstall": {
             "description": "Skip installing dependency packages",
